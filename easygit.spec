@@ -2,7 +2,7 @@ Summary:	Easy git - git for mere mortals
 Summary(pl.UTF-8):	Easy git - git dla zwykłych śmiertelników
 Name:		easygit
 Version:	20080816
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications
 # git clone http://www.gnome.org/~newren/eg/eg.git
