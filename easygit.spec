@@ -2,16 +2,22 @@ Summary:	Easy git - git for mere mortals
 Summary(pl.UTF-8):	Easy git - git dla zwykłych śmiertelników
 Name:		easygit
 Version:	20080816
-Release:	2
+Release:	3
 License:	GPL v2
-Group:		Applications
+Group:		Development/Version Control
 # git clone http://www.gnome.org/~newren/eg/eg.git
 Source0:	%{name}-%{version}.tar.bz2
 # Source0-md5:	ad8d71eb8a19d20fe04dd155c11b6c38
-URL:		http://www.gnome.org/~newren/eg/
+# 404
+#URL:		http://www.gnome.org/~newren/eg/
+BuildRequires:	rpm-perlprov
+BuildRequires:	rpmbuild(macros) >= 1.745
 Requires:	git-core >= 1.5.4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# misdetected from "use an" fragment in comments
+%define		_noautoreq_perl	an
 
 %description
 In short, Easy GIT is a wrapper for git, designed to make git easy to
@@ -40,6 +46,7 @@ Pakiet ten dostarcza bashowe uzupełnianie nazw dla easygit.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir}/bash_completion.d}
+
 install eg $RPM_BUILD_ROOT%{_bindir}
 install bash-completion-eg.sh $RPM_BUILD_ROOT%{_sysconfdir}/bash_completion.d
 
@@ -49,8 +56,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/eg
 
 %files -n bash-completion-easygit
 %defattr(644,root,root,755)
-%{_sysconfdir}/bash_completion.d/*
+%{_sysconfdir}/bash_completion.d/bash-completion-eg.sh
